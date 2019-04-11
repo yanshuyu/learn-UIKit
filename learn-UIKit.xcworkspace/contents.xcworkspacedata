@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:02_tabBarViewController/02_tabBarViewController.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:01_navgationViewController/01_navgationViewController.xcodeproj">
    </FileRef>
 </Workspace>
