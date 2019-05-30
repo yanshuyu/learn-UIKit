@@ -9,9 +9,11 @@
 import UIKit
 
 class ScrollImageView: UIScrollView {
-    var imageView: UIImageView? = nil
-    var doubleTappingEnable = true
+    private var imageView: UIImageView? = nil
     private var unzoomImageSize = CGSize.zero
+    var index: Int = -1
+    
+    var doubleTappingEnable = true
     lazy var tappingGesture: UITapGestureRecognizer = {
         var gesture = UITapGestureRecognizer(target: self, action: #selector(handleTappingGesture(_:)))
         gesture.numberOfTapsRequired = 2
@@ -31,7 +33,7 @@ class ScrollImageView: UIScrollView {
     override func layoutSubviews() {
         super.layoutSubviews()
         centerImage()
-        print(" from layoutSubviews()")
+       // print(" from layoutSubviews()")
     }
     
     
@@ -44,9 +46,10 @@ class ScrollImageView: UIScrollView {
     }
     
 
-    func show(image: UIImage?) -> Void {
+    func show(image: UIImage?, at index: Int) -> Void {
         self.imageView?.removeFromSuperview()
         self.imageView = nil;
+        self.index = -1
         
         if let targetImage = image {
             self.imageView = UIImageView(image: targetImage)
@@ -54,6 +57,7 @@ class ScrollImageView: UIScrollView {
                 return
             }
             
+            self.index = index
             imageView.sizeToFit()
             addSubview(imageView)
             self.unzoomImageSize = targetImage.size
@@ -62,31 +66,38 @@ class ScrollImageView: UIScrollView {
     }
     
     
-    func show(path: String) -> Void {
+    func show(path: String, at index: Int) -> Void {
         let image = UIImage(contentsOfFile: path)
-        show(image: image)
+        show(image: image, at: index)
     }
     
     
-    func frameWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) -> Void {
-        coordinator.animate(alongsideTransition: nil, completion: {  _ in
-            self.setMinMaxScaleForImage()
-            var scale = self.zoomScale
-            scale = max(scale, self.minimumZoomScale)
-            scale = min(scale, self.maximumZoomScale)
-            self.zoomScale = scale
-            self.centerImage()
-            print(" from frameWillTransition()")
-        })
+    func notifyFrameWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) -> Void {
+        self.setMinMaxScaleForImage()
+        var scale = self.zoomScale
+        scale = max(scale, self.minimumZoomScale)
+        scale = min(scale, self.maximumZoomScale)
+        self.zoomScale = scale
+        self.centerImage()
+        
+//        coordinator.animate(alongsideTransition: nil, completion: {  _ in
+//            self.setMinMaxScaleForImage()
+//            var scale = self.zoomScale
+//            scale = max(scale, self.minimumZoomScale)
+//            scale = min(scale, self.maximumZoomScale)
+//            self.zoomScale = scale
+//            self.centerImage()
+//            //print(" from frameWillTransition()")
+//        })
     }
     
     
     func configForImage(size: CGSize) -> Void {
         self.contentSize = size
         setMinMaxScaleForImage()
-        self.zoomScale = self.minimumZoomScale
         self.imageView?.addGestureRecognizer(self.tappingGesture)
         self.imageView?.isUserInteractionEnabled = true
+        self.zoomScale = self.minimumZoomScale
     }
     
     
@@ -95,7 +106,7 @@ class ScrollImageView: UIScrollView {
             return
         }
         
-        let scrollViewSize = self.bounds.size
+        let scrollViewSize = self.frame.size
         let imageViewSize = self.unzoomImageSize
         let xScale = scrollViewSize.width / imageViewSize.width
         let yScale = scrollViewSize.height / imageViewSize.height
@@ -112,7 +123,7 @@ class ScrollImageView: UIScrollView {
         
         self.minimumZoomScale = CGFloat(minScale)
         self.maximumZoomScale = CGFloat(maxScale)
-        print("setMinMaxScaleForImage() called: nminScale: \(minScale), maxScale: \(maxScale)")
+        //print("setMinMaxScaleForImage() called: nminScale: \(minScale), maxScale: \(maxScale)")
     }
     
 
@@ -124,7 +135,7 @@ class ScrollImageView: UIScrollView {
         var imageViewFrame = imageView.frame
         let scrollViewSize = self.bounds.size
         let imageViewSize = imageViewFrame.size
-        print("centerImage() called: imageFrame: \(imageViewFrame), scrollViewContentZoom: \(self.zoomScale)")
+        //print("centerImage() called: imageFrame: \(imageViewFrame), scrollViewContentZoom: \(self.zoomScale)")
         // center horizontally
         if imageViewSize.width < scrollViewSize.width {
             imageViewFrame.origin.x = (scrollViewSize.width - imageViewSize.width)*0.5
@@ -179,6 +190,6 @@ extension ScrollImageView: UIScrollViewDelegate {
     
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
         centerImage()
-        print(" from scrollViewDidZoom()")
+        //print(" from scrollViewDidZoom()")
     }
 }

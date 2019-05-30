@@ -14,6 +14,10 @@
 		11FA2A01229BB3E100836DAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11FA29FF229BB3E100836DAA /* LaunchScreen.storyboard */; };
 		11FA2A09229BB81900836DAA /* ScrollImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FA2A08229BB81900836DAA /* ScrollImageView.swift */; };
 		11FA2A0B229BC07000836DAA /* butterfly.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 11FA2A0A229BC07000836DAA /* butterfly.jpg */; };
+		11FA2A10229D302F00836DAA /* CuriousFrog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 11FA2A0D229D302F00836DAA /* CuriousFrog.jpg */; };
+		11FA2A11229D302F00836DAA /* LeggyFrog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 11FA2A0E229D302F00836DAA /* LeggyFrog.jpg */; };
+		11FA2A12229D302F00836DAA /* PeeringFrog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 11FA2A0F229D302F00836DAA /* PeeringFrog.jpg */; };
+		11FA2A14229D330F00836DAA /* PagingScrollImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FA2A13229D330F00836DAA /* PagingScrollImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		11FA2A02229BB3E100836DAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11FA2A08229BB81900836DAA /* ScrollImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollImageView.swift; sourceTree = "<group>"; };
 		11FA2A0A229BC07000836DAA /* butterfly.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = butterfly.jpg; sourceTree = "<group>"; };
+		11FA2A0D229D302F00836DAA /* CuriousFrog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CuriousFrog.jpg; sourceTree = "<group>"; };
+		11FA2A0E229D302F00836DAA /* LeggyFrog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = LeggyFrog.jpg; sourceTree = "<group>"; };
+		11FA2A0F229D302F00836DAA /* PeeringFrog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PeeringFrog.jpg; sourceTree = "<group>"; };
+		11FA2A13229D330F00836DAA /* PagingScrollImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingScrollImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +66,28 @@
 		11FA29F5229BB3DF00836DAA /* 04_scrollView */ = {
 			isa = PBXGroup;
 			children = (
-				11FA29F6229BB3DF00836DAA /* AppDelegate.swift */,
-				11FA29F8229BB3DF00836DAA /* ViewController.swift */,
-				11FA29FA229BB3DF00836DAA /* Main.storyboard */,
+				11FA2A0C229D300D00836DAA /* Images */,
 				11FA29FD229BB3E100836DAA /* Assets.xcassets */,
+				11FA29F6229BB3DF00836DAA /* AppDelegate.swift */,
+				11FA29FA229BB3DF00836DAA /* Main.storyboard */,
 				11FA29FF229BB3E100836DAA /* LaunchScreen.storyboard */,
 				11FA2A02229BB3E100836DAA /* Info.plist */,
+				11FA29F8229BB3DF00836DAA /* ViewController.swift */,
+				11FA2A13229D330F00836DAA /* PagingScrollImageView.swift */,
 				11FA2A08229BB81900836DAA /* ScrollImageView.swift */,
-				11FA2A0A229BC07000836DAA /* butterfly.jpg */,
 			);
 			path = 04_scrollView;
+			sourceTree = "<group>";
+		};
+		11FA2A0C229D300D00836DAA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				11FA2A0D229D302F00836DAA /* CuriousFrog.jpg */,
+				11FA2A0E229D302F00836DAA /* LeggyFrog.jpg */,
+				11FA2A0F229D302F00836DAA /* PeeringFrog.jpg */,
+				11FA2A0A229BC07000836DAA /* butterfly.jpg */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,8 +148,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11FA2A11229D302F00836DAA /* LeggyFrog.jpg in Resources */,
+				11FA2A10229D302F00836DAA /* CuriousFrog.jpg in Resources */,
 				11FA2A01229BB3E100836DAA /* LaunchScreen.storyboard in Resources */,
 				11FA29FE229BB3E100836DAA /* Assets.xcassets in Resources */,
+				11FA2A12229D302F00836DAA /* PeeringFrog.jpg in Resources */,
 				11FA2A0B229BC07000836DAA /* butterfly.jpg in Resources */,
 				11FA29FC229BB3DF00836DAA /* Main.storyboard in Resources */,
 			);
@@ -143,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11FA29F9229BB3DF00836DAA /* ViewController.swift in Sources */,
+				11FA2A14229D330F00836DAA /* PagingScrollImageView.swift in Sources */,
 				11FA2A09229BB81900836DAA /* ScrollImageView.swift in Sources */,
 				11FA29F7229BB3DF00836DAA /* AppDelegate.swift in Sources */,
 			);
