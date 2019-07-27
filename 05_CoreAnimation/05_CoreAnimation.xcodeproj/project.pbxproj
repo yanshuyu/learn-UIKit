@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		115F800E22EC2DD2004E8241 /* CAGradientLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 115F800D22EC2DD2004E8241 /* CAGradientLayer.storyboard */; };
+		115F801022EC2E6B004E8241 /* GradientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F800F22EC2E6B004E8241 /* GradientViewController.swift */; };
 		1197BFCB22DC700000A30CF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1197BFCA22DC700000A30CF6 /* AppDelegate.swift */; };
 		1197BFD222DC700300A30CF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1197BFD122DC700300A30CF6 /* Assets.xcassets */; };
 		1197BFD522DC700300A30CF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1197BFD322DC700300A30CF6 /* LaunchScreen.storyboard */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		115F800D22EC2DD2004E8241 /* CAGradientLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CAGradientLayer.storyboard; sourceTree = "<group>"; };
+		115F800F22EC2E6B004E8241 /* GradientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientViewController.swift; sourceTree = "<group>"; };
 		1197BFC722DC700000A30CF6 /* 05_CoreAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 05_CoreAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1197BFCA22DC700000A30CF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1197BFD122DC700300A30CF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,6 +74,7 @@
 		1197BFE622DC746300A30CF6 /* StoryBoards */ = {
 			isa = PBXGroup;
 			children = (
+				115F800D22EC2DD2004E8241 /* CAGradientLayer.storyboard */,
 				1197BFE722DC757100A30CF6 /* Transform.storyboard */,
 			);
 			path = StoryBoards;
@@ -79,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				1197BFEA22DC75BE00A30CF6 /* TransformViewController.swift */,
+				115F800F22EC2E6B004E8241 /* GradientViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -145,6 +151,7 @@
 				1197BFD222DC700300A30CF6 /* Assets.xcassets in Resources */,
 				1197BFE422DC744900A30CF6 /* CoreAnimation.storyboard in Resources */,
 				1197BFE822DC757100A30CF6 /* Transform.storyboard in Resources */,
+				115F800E22EC2DD2004E8241 /* CAGradientLayer.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +164,7 @@
 			files = (
 				1197BFCB22DC700000A30CF6 /* AppDelegate.swift in Sources */,
 				1197BFEB22DC75BE00A30CF6 /* TransformViewController.swift in Sources */,
+				115F801022EC2E6B004E8241 /* GradientViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
