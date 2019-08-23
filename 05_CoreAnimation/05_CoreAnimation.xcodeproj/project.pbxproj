@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		112EA65F230FC61800014F4B /* CirclePrograssBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112EA65E230FC61800014F4B /* CirclePrograssBar.swift */; };
 		115F800E22EC2DD2004E8241 /* CAGradientLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 115F800D22EC2DD2004E8241 /* CAGradientLayer.storyboard */; };
 		115F801022EC2E6B004E8241 /* GradientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F800F22EC2E6B004E8241 /* GradientViewController.swift */; };
 		1197BFCB22DC700000A30CF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1197BFCA22DC700000A30CF6 /* AppDelegate.swift */; };
@@ -15,9 +16,14 @@
 		1197BFE422DC744900A30CF6 /* CoreAnimation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1197BFE222DC744900A30CF6 /* CoreAnimation.storyboard */; };
 		1197BFE822DC757100A30CF6 /* Transform.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1197BFE722DC757100A30CF6 /* Transform.storyboard */; };
 		1197BFEB22DC75BE00A30CF6 /* TransformViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1197BFEA22DC75BE00A30CF6 /* TransformViewController.swift */; };
+		11D8C62622EDE868000B3495 /* CALayerImplicitAnimation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D8C62522EDE868000B3495 /* CALayerImplicitAnimation.storyboard */; };
+		11D8C62822EDE892000B3495 /* CALayerImplicitAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8C62722EDE892000B3495 /* CALayerImplicitAnimationViewController.swift */; };
+		11D8C62A22EF0716000B3495 /* CALayerExplicityAnimation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D8C62922EF0716000B3495 /* CALayerExplicityAnimation.storyboard */; };
+		11D8C62C22EF0744000B3495 /* CALayerExplicityAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8C62B22EF0744000B3495 /* CALayerExplicityAnimationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		112EA65E230FC61800014F4B /* CirclePrograssBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclePrograssBar.swift; sourceTree = "<group>"; };
 		115F800D22EC2DD2004E8241 /* CAGradientLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CAGradientLayer.storyboard; sourceTree = "<group>"; };
 		115F800F22EC2E6B004E8241 /* GradientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientViewController.swift; sourceTree = "<group>"; };
 		1197BFC722DC700000A30CF6 /* 05_CoreAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 05_CoreAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -28,6 +34,10 @@
 		1197BFE322DC744900A30CF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CoreAnimation.storyboard; sourceTree = "<group>"; };
 		1197BFE722DC757100A30CF6 /* Transform.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Transform.storyboard; sourceTree = "<group>"; };
 		1197BFEA22DC75BE00A30CF6 /* TransformViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformViewController.swift; sourceTree = "<group>"; };
+		11D8C62522EDE868000B3495 /* CALayerImplicitAnimation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CALayerImplicitAnimation.storyboard; sourceTree = "<group>"; };
+		11D8C62722EDE892000B3495 /* CALayerImplicitAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerImplicitAnimationViewController.swift; sourceTree = "<group>"; };
+		11D8C62922EF0716000B3495 /* CALayerExplicityAnimation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CALayerExplicityAnimation.storyboard; sourceTree = "<group>"; };
+		11D8C62B22EF0744000B3495 /* CALayerExplicityAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerExplicityAnimationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +84,8 @@
 		1197BFE622DC746300A30CF6 /* StoryBoards */ = {
 			isa = PBXGroup;
 			children = (
+				11D8C62922EF0716000B3495 /* CALayerExplicityAnimation.storyboard */,
+				11D8C62522EDE868000B3495 /* CALayerImplicitAnimation.storyboard */,
 				115F800D22EC2DD2004E8241 /* CAGradientLayer.storyboard */,
 				1197BFE722DC757100A30CF6 /* Transform.storyboard */,
 			);
@@ -85,6 +97,9 @@
 			children = (
 				1197BFEA22DC75BE00A30CF6 /* TransformViewController.swift */,
 				115F800F22EC2E6B004E8241 /* GradientViewController.swift */,
+				11D8C62722EDE892000B3495 /* CALayerImplicitAnimationViewController.swift */,
+				11D8C62B22EF0744000B3495 /* CALayerExplicityAnimationViewController.swift */,
+				112EA65E230FC61800014F4B /* CirclePrograssBar.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -147,9 +162,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11D8C62622EDE868000B3495 /* CALayerImplicitAnimation.storyboard in Resources */,
 				1197BFD522DC700300A30CF6 /* LaunchScreen.storyboard in Resources */,
 				1197BFD222DC700300A30CF6 /* Assets.xcassets in Resources */,
 				1197BFE422DC744900A30CF6 /* CoreAnimation.storyboard in Resources */,
+				11D8C62A22EF0716000B3495 /* CALayerExplicityAnimation.storyboard in Resources */,
 				1197BFE822DC757100A30CF6 /* Transform.storyboard in Resources */,
 				115F800E22EC2DD2004E8241 /* CAGradientLayer.storyboard in Resources */,
 			);
@@ -162,8 +179,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11D8C62C22EF0744000B3495 /* CALayerExplicityAnimationViewController.swift in Sources */,
 				1197BFCB22DC700000A30CF6 /* AppDelegate.swift in Sources */,
 				1197BFEB22DC75BE00A30CF6 /* TransformViewController.swift in Sources */,
+				11D8C62822EDE892000B3495 /* CALayerImplicitAnimationViewController.swift in Sources */,
+				112EA65F230FC61800014F4B /* CirclePrograssBar.swift in Sources */,
 				115F801022EC2E6B004E8241 /* GradientViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
