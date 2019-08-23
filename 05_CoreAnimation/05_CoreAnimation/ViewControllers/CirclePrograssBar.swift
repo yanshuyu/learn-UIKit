@@ -96,6 +96,8 @@ class CirclePrograssBar: UIView {
         barAnim.fromValue = 0
         barAnim.toValue = 1
         barAnim.duration = CFTimeInterval(2)
+        barAnim.fillMode = .both
+        barAnim.isRemovedOnCompletion = false
         barAnim.delegate = self
         self.barLayer.add(barAnim, forKey: "barAnim")
     }
@@ -104,12 +106,12 @@ class CirclePrograssBar: UIView {
 
 extension CirclePrograssBar: CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        if (flag) {
-            let barAnim = anim as! CABasicAnimation
-            CATransaction.begin()
-            CATransaction.setDisableActions(true)
-            self.barLayer.strokeEnd = barAnim.toValue as! CGFloat
-            CATransaction.commit()
-        }
+//        if (flag) {
+//            let barAnim = anim as! CABasicAnimation
+//            CATransaction.begin()
+//            CATransaction.setDisableActions(true)
+//            self.barLayer.strokeEnd = barAnim.toValue as! CGFloat
+//            CATransaction.commit()
+//        }
     }
 }
