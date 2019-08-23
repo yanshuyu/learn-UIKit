@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:08_DragAndDrop/08_DragAndDrop.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:07_IOSDrawing/07_IOSDrawing.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:06_coreGraphices/06_coreGraphices.xcodeproj">
    </FileRef>
    <FileRef
