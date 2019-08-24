@@ -46,17 +46,25 @@
                                         <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="barWidth">
-                                        <real key="value" value="20"/>
+                                        <real key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="barTrackTintColor">
                                         <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGN-c0-NOw">
-                                <rect key="frame" x="624" y="317" width="86" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1G-gl-FNG">
+                                <rect key="frame" x="700" y="311" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="run bar anim"/>
+                                <state key="normal" title="stop"/>
+                                <connections>
+                                    <action selector="stopBarAnim:" destination="1O2-Gu-4Jq" eventType="touchUpInside" id="f9h-4x-JbX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGN-c0-NOw">
+                                <rect key="frame" x="615" y="311" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="go"/>
                                 <connections>
                                     <action selector="runBarAnim:" destination="1O2-Gu-4Jq" eventType="touchUpInside" id="a7m-HF-hos"/>
                                 </connections>
@@ -67,7 +75,9 @@
                     </view>
                     <connections>
                         <outlet property="colorView" destination="Q9Z-nb-CDk" id="sIi-Aj-MdJ"/>
+                        <outlet property="goButton" destination="iGN-c0-NOw" id="x3c-1v-hzc"/>
                         <outlet property="prograssBar" destination="Afd-8I-5Mv" id="EfV-Mf-PBv"/>
+                        <outlet property="stopButton" destination="A1G-gl-FNG" id="oC6-Rg-rzy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ftA-Ty-K2R" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,6 +11,8 @@ import UIKit
 class CALayerExplicityAnimationViewController: UIViewController {
     @IBOutlet weak var colorView: UIView!
     @IBOutlet weak var prograssBar: CirclePrograssBar!
+    @IBOutlet weak var goButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
     
     var colorLayer: CALayer! = nil;
     
@@ -44,6 +46,10 @@ class CALayerExplicityAnimationViewController: UIViewController {
     
     @IBAction func runBarAnim(_ sender: Any) {
         self.prograssBar.runPrograssAnimation()
+    }
+    
+    @IBAction func stopBarAnim(_ sender: Any) {
+        self.prograssBar.stopPrograssAnimation()
     }
     
     func randomColor() -> CGColor {

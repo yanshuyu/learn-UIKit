@@ -55,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		112EA665231007B900014F4B /* Supported */ = {
+			isa = PBXGroup;
+			children = (
+				112EA65E230FC61800014F4B /* CirclePrograssBar.swift */,
+			);
+			path = Supported;
+			sourceTree = "<group>";
+		};
 		1197BFBE22DC700000A30CF6 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +82,7 @@
 		1197BFC922DC700000A30CF6 /* 05_CoreAnimation */ = {
 			isa = PBXGroup;
 			children = (
+				112EA665231007B900014F4B /* Supported */,
 				1197BFE922DC759000A30CF6 /* ViewControllers */,
 				1197BFE622DC746300A30CF6 /* StoryBoards */,
 				1197BFCA22DC700000A30CF6 /* AppDelegate.swift */,
@@ -104,7 +113,6 @@
 				115F800F22EC2E6B004E8241 /* GradientViewController.swift */,
 				11D8C62722EDE892000B3495 /* CALayerImplicitAnimationViewController.swift */,
 				11D8C62B22EF0744000B3495 /* CALayerExplicityAnimationViewController.swift */,
-				112EA65E230FC61800014F4B /* CirclePrograssBar.swift */,
 				112EA662230FE83500014F4B /* CATransitionViewController.swift */,
 			);
 			path = ViewControllers;

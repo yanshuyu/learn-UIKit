@@ -11,7 +11,11 @@ import UIKit
 
 @IBDesignable
 class CirclePrograssBar: UIView {
-    @IBInspectable var barWidth: CGFloat = 10
+    @IBInspectable var barWidth: CGFloat = 10 {
+        didSet {
+            self.setNeedsLayout()
+        }
+    }
     @IBInspectable var barBeginTintColor: UIColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1) {
         didSet {
             self.barGradientLayer.colors = [self.barBeginTintColor.cgColor, self.barEndTintColor.cgColor]
@@ -28,6 +32,8 @@ class CirclePrograssBar: UIView {
             
         }
     }
+    
+    private var barAnimIsRunning = false;
     
     private lazy var trackLayer: CAShapeLayer = {
         let track = CAShapeLayer()
@@ -54,7 +60,7 @@ class CirclePrograssBar: UIView {
         barLayer.fillColor = UIColor.clear.cgColor
         barLayer.strokeColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor
         barLayer.strokeStart = 0
-        barLayer.strokeEnd = 0
+        barLayer.strokeEnd = 1
         barLayer.path = UIBezierPath(arcCenter: CGPoint(x: self.bounds.width*0.5, y: self.bounds.height*0.5),
                                   radius: min(self.bounds.width*0.5, self.bounds.height*0.5) - self.barWidth*0.5,
                                   startAngle: -.pi/2,
@@ -84,27 +90,72 @@ class CirclePrograssBar: UIView {
     }
     
     private func setup() {
+        self.layer.masksToBounds = true
         self.layer.addSublayer(self.trackLayer)
         self.layer.addSublayer(self.barGradientLayer)
-        self.barGradientLayer.mask = self.barLayer
+        self.layer.addSublayer(self.barLayer)
+        //self.barGradientLayer.mask = self.barLayer
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.barLayer.lineWidth = self.barWidth
+        self.trackLayer.lineWidth = self.barWidth
+        let path = UIBezierPath(arcCenter: CGPoint(x: self.bounds.width*0.5, y: self.bounds.height*0.5),
+                                     radius: min(self.bounds.width*0.5, self.bounds.height*0.5) - self.barWidth*0.5,
+                                     startAngle: -.pi/2,
+                                     endAngle: .pi*2 - .pi/2,
+                                     clockwise: true).cgPath
+        self.barLayer.path = path
+        self.trackLayer.path = path
+        
+        
     }
     
     func runPrograssAnimation() {
-        self.barLayer.removeAnimation(forKey: "barAnim")
-        let barAnim = CABasicAnimation()
-        barAnim.keyPath = "strokeEnd"
-        barAnim.fromValue = 0
-        barAnim.toValue = 1
-        barAnim.duration = CFTimeInterval(2)
-        barAnim.fillMode = .both
-        barAnim.isRemovedOnCompletion = false
-        barAnim.delegate = self
-        self.barLayer.add(barAnim, forKey: "barAnim")
+        if let _ = self.barLayer.animation(forKey: "barAnim") {
+            if !self.barAnimIsRunning {
+                //resume bar progress animation
+                self.barLayer.speed = 1
+            }
+        } else {
+            let barAnim = CABasicAnimation()
+            barAnim.keyPath = "strokeEnd"
+            barAnim.fromValue = 0
+            barAnim.toValue = 1
+            barAnim.duration = CFTimeInterval(2)
+            barAnim.fillMode = .both
+            barAnim.isRemovedOnCompletion = false
+            barAnim.delegate = self
+            self.barLayer.add(barAnim, forKey: "barAnim")
+        }
+        
+    }
+    
+    func stopPrograssAnimation() {
+        if let _ = self.barLayer.animation(forKey: "barAnim") {
+            if let presentLayer = self.barLayer.presentation() {
+                // pause bar progress animation
+                CATransaction.begin()
+                CATransaction.setDisableActions(true)
+                self.barLayer.strokeEnd = presentLayer.strokeEnd
+                CATransaction.commit()
+                //self.barLayer.speed = 0.1
+                self.barLayer.speed = 0
+                self.barAnimIsRunning = false
+            }
+        }
     }
 
 }
 
 extension CirclePrograssBar: CAAnimationDelegate {
+    func animationDidStart(_ anim: CAAnimation) {
+        if anim == self.barLayer.animation(forKey: "barAnim") {
+            self.barAnimIsRunning = true
+        }
+    }
+    
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
 //        if (flag) {
 //            let barAnim = anim as! CABasicAnimation
@@ -113,5 +164,17 @@ extension CirclePrograssBar: CAAnimationDelegate {
 //            self.barLayer.strokeEnd = barAnim.toValue as! CGFloat
 //            CATransaction.commit()
 //        }
+        if anim == self.barLayer.animation(forKey: "barAnim") {
+            self.barAnimIsRunning = false
+        }
+        if flag {
+            if let presentLayer = self.barLayer.presentation() {
+                CATransaction.begin()
+                CATransaction.setDisableActions(true)
+                self.barLayer.strokeEnd = presentLayer.strokeEnd
+                CATransaction.commit()
+            }
+            self.barLayer.removeAllAnimations()
+        }
     }
 }
