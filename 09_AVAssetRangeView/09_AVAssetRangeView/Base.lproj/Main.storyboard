@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="_9_AVAssetRangeView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vv4-76-w6G" userLabel="vdieoThumbnail_1" customClass="VideoAssetThumbnailView" customModule="_9_AVAssetRangeView" customModuleProvider="target">
+                                <rect key="frame" x="20" y="508" width="374" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="FDT-Oc-5zk"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AmY-Nv-mpZ" userLabel="vdieoThumbnail_2" customClass="VideoAssetThumbnailView" customModule="_9_AVAssetRangeView" customModuleProvider="target">
+                                <rect key="frame" x="20" y="608" width="374" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="iG9-lT-5Re"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xSp-33-WcJ" userLabel="waveformView_1" customClass="AudioAssetWaveformView" customModule="_9_AVAssetRangeView" customModuleProvider="target">
+                                <rect key="frame" x="20" y="408" width="374" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdB-wc-8vu" userLabel="waveformView_2" customClass="AudioAssetWaveformView" customModule="_9_AVAssetRangeView" customModuleProvider="target">
+                                <rect key="frame" x="20" y="308" width="374" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iNl-3Z-vfp" userLabel="waveformView_3" customClass="AudioAssetWaveformView" customModule="_9_AVAssetRangeView" customModuleProvider="target">
+                                <rect key="frame" x="20" y="208" width="374" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xSp-33-WcJ" firstAttribute="centerX" secondItem="vv4-76-w6G" secondAttribute="centerX" id="6rI-ZX-Rxb"/>
+                            <constraint firstItem="vv4-76-w6G" firstAttribute="top" secondItem="xSp-33-WcJ" secondAttribute="bottom" constant="20" id="7IW-uY-IUZ"/>
+                            <constraint firstItem="vv4-76-w6G" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="100" id="IhH-YR-BFr"/>
+                            <constraint firstItem="xSp-33-WcJ" firstAttribute="height" secondItem="vv4-76-w6G" secondAttribute="height" id="LgF-wh-I3n"/>
+                            <constraint firstItem="AmY-Nv-mpZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Lr4-RE-dSP"/>
+                            <constraint firstItem="iNl-3Z-vfp" firstAttribute="width" secondItem="pdB-wc-8vu" secondAttribute="width" id="TQa-eb-p5d"/>
+                            <constraint firstItem="xSp-33-WcJ" firstAttribute="top" secondItem="pdB-wc-8vu" secondAttribute="bottom" constant="20" id="Ydo-pl-1xI"/>
+                            <constraint firstItem="iNl-3Z-vfp" firstAttribute="centerX" secondItem="pdB-wc-8vu" secondAttribute="centerX" id="a9b-Vd-KJV"/>
+                            <constraint firstItem="vv4-76-w6G" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="cnf-fy-czN"/>
+                            <constraint firstItem="xSp-33-WcJ" firstAttribute="width" secondItem="vv4-76-w6G" secondAttribute="width" id="dID-YL-9e4"/>
+                            <constraint firstItem="AmY-Nv-mpZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="200" id="dyK-rb-k2J"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vv4-76-w6G" secondAttribute="trailing" constant="20" id="i6F-XF-zG4"/>
+                            <constraint firstItem="iNl-3Z-vfp" firstAttribute="height" secondItem="pdB-wc-8vu" secondAttribute="height" id="iF8-4H-ie0"/>
+                            <constraint firstItem="pdB-wc-8vu" firstAttribute="width" secondItem="xSp-33-WcJ" secondAttribute="width" id="iHs-H1-q4x"/>
+                            <constraint firstItem="pdB-wc-8vu" firstAttribute="top" secondItem="iNl-3Z-vfp" secondAttribute="bottom" constant="20" id="rxH-b9-RSH"/>
+                            <constraint firstItem="pdB-wc-8vu" firstAttribute="height" secondItem="xSp-33-WcJ" secondAttribute="height" id="rzD-CI-Tpy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AmY-Nv-mpZ" secondAttribute="trailing" constant="20" id="w7o-ND-fzJ"/>
+                            <constraint firstItem="pdB-wc-8vu" firstAttribute="centerX" secondItem="xSp-33-WcJ" secondAttribute="centerX" id="zUX-Wg-oiO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="videoThumbView_1" destination="vv4-76-w6G" id="fXq-Ke-sk8"/>
+                        <outlet property="videoThumbView_2" destination="AmY-Nv-mpZ" id="1ay-6B-G09"/>
+                        <outlet property="waveformView_1" destination="xSp-33-WcJ" id="6iX-Mv-cVD"/>
+                        <outlet property="waveformView_2" destination="pdB-wc-8vu" id="j2q-Y4-GDS"/>
+                        <outlet property="waveformView_3" destination="iNl-3Z-vfp" id="DnG-e5-LJt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="129"/>
+        </scene>
+    </scenes>
+</document>
