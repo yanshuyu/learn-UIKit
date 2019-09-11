@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:10_OperationQueue/10_OperationQueue.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:09_AVAssetRangeView/09_AVAssetRangeView.xcodeproj">
    </FileRef>
    <FileRef
