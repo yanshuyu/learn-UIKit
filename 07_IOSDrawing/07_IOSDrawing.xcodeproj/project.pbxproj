@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		115648E5233614A500474088 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115648E4233614A500474088 /* MainViewController.swift */; };
+		115648E72336165A00474088 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115648E62336165A00474088 /* DetailViewController.swift */; };
+		115648E9233616FB00474088 /* DetailMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115648E8233616FB00474088 /* DetailMenuItem.swift */; };
+		115648EB2336220C00474088 /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115648EA2336220C00474088 /* ImageProcessor.swift */; };
 		11ECAC5522F898B900FE11CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ECAC5422F898B900FE11CE /* AppDelegate.swift */; };
 		11ECAC5A22F898B900FE11CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11ECAC5822F898B900FE11CE /* Main.storyboard */; };
 		11ECAC5C22F898BA00FE11CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11ECAC5B22F898BA00FE11CE /* Assets.xcassets */; };
@@ -14,6 +18,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		115648E4233614A500474088 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		115648E62336165A00474088 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		115648E8233616FB00474088 /* DetailMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMenuItem.swift; sourceTree = "<group>"; };
+		115648EA2336220C00474088 /* ImageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
 		11ECAC5122F898B900FE11CE /* 07_IOSDrawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 07_IOSDrawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11ECAC5422F898B900FE11CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11ECAC5922F898B900FE11CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -33,6 +41,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		115648E0233613B000474088 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				115648E4233614A500474088 /* MainViewController.swift */,
+				115648E62336165A00474088 /* DetailViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		115648E2233613CC00474088 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				115648E8233616FB00474088 /* DetailMenuItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		115648E32336143B00474088 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				115648EA2336220C00474088 /* ImageProcessor.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		11ECAC4822F898B900FE11CE = {
 			isa = PBXGroup;
 			children = (
@@ -52,6 +85,9 @@
 		11ECAC5322F898B900FE11CE /* 07_IOSDrawing */ = {
 			isa = PBXGroup;
 			children = (
+				115648E32336143B00474088 /* Utilities */,
+				115648E2233613CC00474088 /* Model */,
+				115648E0233613B000474088 /* ViewControllers */,
 				11ECAC5422F898B900FE11CE /* AppDelegate.swift */,
 				11ECAC5822F898B900FE11CE /* Main.storyboard */,
 				11ECAC5B22F898BA00FE11CE /* Assets.xcassets */,
@@ -132,7 +168,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				115648E72336165A00474088 /* DetailViewController.swift in Sources */,
 				11ECAC5522F898B900FE11CE /* AppDelegate.swift in Sources */,
+				115648EB2336220C00474088 /* ImageProcessor.swift in Sources */,
+				115648E9233616FB00474088 /* DetailMenuItem.swift in Sources */,
+				115648E5233614A500474088 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
