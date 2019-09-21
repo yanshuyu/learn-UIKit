@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreImage
 
 enum ThumbnailContentMode {
     case AspectRatioFit
@@ -39,6 +40,15 @@ class ImageProcessor {
         UIGraphicsEndImageContext()
         
         return thumbnailImage
+    }
+    
+    class func generateSubImage(image: UIImage, in rect: CGRect) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 1)
+        let dtsRect = CGRect(origin: CGPoint(x: -rect.origin.x, y: -rect.origin.y), size: image.size)
+        image.draw(in: dtsRect)
+        let subImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return subImage
     }
     
     class func sizeByScale(size: CGSize, scale: CGFloat) -> CGSize {
