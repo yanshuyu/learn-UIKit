@@ -13,7 +13,7 @@ class SYRangeSlider: UIControl {
     //
     // MARK: - public property
     //
-    public var minimumValue: CGFloat = 0 {
+    @IBInspectable public var minimumValue: CGFloat = 0 {
         didSet {
             if self.minimumValue != oldValue {
                 if self.minimumValue > self.lowerValue {
@@ -23,7 +23,7 @@ class SYRangeSlider: UIControl {
             layoutSubLayers()
         }
     }
-    public var maximumValue: CGFloat = 10 {
+    @IBInspectable public var maximumValue: CGFloat = 10 {
         didSet {
             if self.maximumValue != oldValue {
                 if self.maximumValue < self.upperValue {
@@ -33,7 +33,7 @@ class SYRangeSlider: UIControl {
             }
         }
     }
-    public var lowerValue: CGFloat = 0 {
+    @IBInspectable public var lowerValue: CGFloat = 0 {
         didSet {
             if self.lowerValue != oldValue {
                 if self.lowerValue < self.minimumValue {
@@ -45,13 +45,17 @@ class SYRangeSlider: UIControl {
                 
                 layoutSubLayers()
                 
+                updateTrackApperanceWithRangeValues(begin: (self.lowerValue-self.minimumValue)/(self.maximumValue-self.minimumValue),
+                                                    end: (self.upperValue-self.minimumValue)/(self.maximumValue-self.minimumValue))
+                
                 if self.slidingKnob != nil {
                     sendActions(for: .valueChanged)
                 }
+                
             }
         }
     }
-    public var upperValue: CGFloat = 6 {
+    @IBInspectable public var upperValue: CGFloat = 6 {
         didSet {
             if self.upperValue != oldValue {
                 if self.upperValue < self.lowerValue {
@@ -62,7 +66,10 @@ class SYRangeSlider: UIControl {
                 }
                 
                 layoutSubLayers()
-    
+                
+                updateTrackApperanceWithRangeValues(begin: (self.lowerValue-self.minimumValue)/(self.maximumValue-self.minimumValue),
+                                                    end: (self.upperValue-self.minimumValue)/(self.maximumValue-self.minimumValue))
+                
                 if self.slidingKnob != nil {
                     sendActions(for: .valueChanged)
                 }
@@ -70,45 +77,137 @@ class SYRangeSlider: UIControl {
         }
     }
     
-    public var roundness: CGFloat {
+    @IBInspectable public var roundness: CGFloat {
         get {
             return self.trackLayer.roundness
         }
         set {
-            self.trackLayer.roundness = newValue
+            updateSliderApperanceWithRoundness(newValue)
         }
     }
+    
+    @IBInspectable public var trackColor: UIColor = UIColor.gray {
+        didSet {
+            updateTrackApperanceWithColors(trackColor: self.trackColor, rangeColor: self.rangeColor)
+        }
+    }
+    @IBInspectable public var rangeColor: UIColor = UIColor.blue {
+        didSet {
+            updateTrackApperanceWithColors(trackColor: self.trackColor, rangeColor: self.rangeColor)
+        }
+    }
+    @IBInspectable public var knobColor: UIColor = UIColor.white {
+        didSet {
+            updateKnobApperanceWithColor(self.knobColor)
+        }
+    }
+    
     //
     // MARK: - private property
     //
     private let defaultHeight: CGFloat = 30
-    private let defaultTrackHeightScaleFactor: CGFloat = 1 / 5
+    private let defaultTrackHeightScaleFactor: CGFloat = 1 / 3
     
     private var usableTrackLength: CGFloat {
         return self.bounds.width - self.defaultHeight
     }
     
     private class SYRangeSliderKnobLayer: CALayer {
+        public var tintColor: CGColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
         
-    }
-    
-    private class SYRangeSliderTrackLayer: CALayer {
-        public var trackColor: CGColor = UIColor.lightGray.cgColor
-        public var rangeColor: CGColor = UIColor.blue.cgColor
         public var roundness: CGFloat = 1.0
-        public var rangStart: CGFloat = 0.0
-        public var rangEnd: CGFloat = 1.0
         
         private var roundRadius: CGFloat {
             return self.bounds.height * 0.5 * self.roundness
         }
         
         override func draw(in ctx: CGContext) {
-            // draw background track
-            let trackPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.roundRadius)
-            ctx.setFillColor(self.trackColor)
-            ctx.addPath(trackPath.cgPath)
+            let knobPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.roundRadius).cgPath
+            //ctx.saveGState()
+            ctx.addPath(knobPath)
+            ctx.clip()
+            
+            // fill konb
+            ctx.setShadow(offset: CGSize(width: 0, height: 1), blur: 1, color: UIColor.gray.cgColor)
+            ctx.setFillColor(self.tintColor)
+            ctx.addPath(knobPath)
             ctx.fillPath()
+            
+            // strok knob
+            ctx.addPath(knobPath)
+            ctx.setStrokeColor(UIColor.gray.cgColor)
+            ctx.strokePath()
+            
+            // draw inner gradient
+            //ctx.restoreGState()
+//            let colorComps: [CGFloat] = [0.0, 0.0, 0.0, 0.15,
+//                                         0.0, 0,0, 0.0, 0.05]
+//            let locations: [CGFloat] = [0.0, 1.0]
+//            
+//            let linerGradient = CGGradient(colorSpace: CGColorSpaceCreateDeviceRGB(),
+//                                           colorComponents: colorComps,
+//                                           locations: locations,
+//                                           count: locations.count)!
+//            let gradientRect = self.bounds.insetBy(dx: 2, dy: 2)
+//            let gradientPath = UIBezierPath(roundedRect: gradientRect, cornerRadius: gradientRect.width * 0.5 * self.roundness).cgPath
+//            ctx.addPath(gradientPath)
+//            ctx.clip()
+//            ctx.drawLinearGradient(linerGradient,
+//                                   start: CGPoint(x: self.bounds.midX, y: self.bounds.minY),
+//                                   end: CGPoint(x: self.bounds.midX, y: self.bounds.maxY),
+//                                   options: [])
+            
+            
+        }
+    }
+    
+    private class SYRangeSliderTrackLayer: CALayer {
+        public var trackColor: CGColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1).cgColor
+        public var rangeColor: CGColor = #colorLiteral(red: 0.1756276488, green: 0.3068953753, blue: 0.9300970435, alpha: 1).cgColor
+        public var roundness: CGFloat = 1.0
+        public var rangeStart: CGFloat = 0.0
+        public var rangeEnd: CGFloat = 1.0
+        private var roundRadius: CGFloat {
+            return self.bounds.height * 0.5 * self.roundness
+        }
+        
+        override func draw(in ctx: CGContext) {
+            
+            let trackPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.roundRadius).cgPath
+            ctx.setFillColor(self.trackColor)
+            ctx.addPath(trackPath)
+            ctx.clip()
+            
+            // draw background track
+            ctx.addPath(trackPath)
+            ctx.fillPath()
+            
+            // draw range track
+            let startX = self.bounds.width * self.rangeStart
+            let endX = self.bounds.width * self.rangeEnd
+            let rangePath = UIBezierPath(rect: CGRect(x: startX,
+                                                      y: 0,
+                                                      width: endX - startX,
+                height: self.bounds.height)).cgPath
+            ctx.setFillColor(self.rangeColor)
+            ctx.addPath(rangePath)
+            ctx.fillPath()
+            
+            // draw track highlight
+            let highlightPath = UIBezierPath(roundedRect: CGRect(x: self.roundRadius,
+                                                                 y: self.bounds.height*0.5,
+                                                                 width: self.bounds.width-self.roundRadius,
+                                                                 height: self.bounds.height*0.5), cornerRadius: self.roundRadius).cgPath
+            ctx.addPath(highlightPath)
+            ctx.setFillColor(UIColor(white: 1.0, alpha: 0.4).cgColor)
+            ctx.fillPath()
+            
+            // outline track
+            ctx.setShadow(offset: CGSize(width: 0, height: 2), blur: 4, color: UIColor.gray.cgColor)
+            ctx.setStrokeColor(UIColor.gray.cgColor)
+            ctx.addPath(trackPath)
+            ctx.strokePath()
+            
         }
     }
     
@@ -127,24 +226,19 @@ class SYRangeSlider: UIControl {
     }
     
     private func commonInit() {
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.darkGray.cgColor
-        
         self.trackLayer = SYRangeSliderTrackLayer()
         self.layer.addSublayer(self.trackLayer)
-        self.trackLayer.backgroundColor = UIColor.lightGray.cgColor
         
         self.leftKnobLayer = SYRangeSliderKnobLayer()
         self.layer.addSublayer(self.leftKnobLayer)
-        self.leftKnobLayer.backgroundColor = UIColor.darkGray.cgColor
         
         self.rightKnobLayer = SYRangeSliderKnobLayer()
         self.layer.addSublayer(self.rightKnobLayer)
-        self.rightKnobLayer.backgroundColor = UIColor.darkGray.cgColor
-        
-        self.roundness = 1.0
-        
+    
         layoutSubLayers()
+        updateTrackApperanceWithRangeValues(begin: (self.lowerValue-self.minimumValue)/(self.maximumValue-self.minimumValue),
+                                            end: (self.upperValue-self.minimumValue)/(self.maximumValue-self.minimumValue))
+        self.roundness = 0.99
     }
     
     //
@@ -252,4 +346,34 @@ class SYRangeSlider: UIControl {
         value = max(value, lowerBound)
         value = min(value, upperBound)
     }
+    
+    private func updateTrackApperanceWithRangeValues(begin: CGFloat, end: CGFloat) {
+        self.trackLayer.rangeStart = begin
+        self.trackLayer.rangeEnd = end
+        self.trackLayer.setNeedsDisplay()
+    }
+    
+    private func updateKnobApperanceWithColor(_ tint: UIColor) {
+        self.leftKnobLayer.tintColor = tint.cgColor
+        self.rightKnobLayer.tintColor = tint.cgColor
+        self.leftKnobLayer.setNeedsDisplay()
+        self.rightKnobLayer.setNeedsDisplay()
+    }
+    
+    private func updateTrackApperanceWithColors(trackColor: UIColor, rangeColor: UIColor) {
+        self.trackLayer.rangeColor = rangeColor.cgColor
+        self.trackLayer.trackColor = trackColor.cgColor
+        self.trackLayer.setNeedsDisplay()
+    }
+    
+    private func updateSliderApperanceWithRoundness(_ value: CGFloat) {
+        self.trackLayer.roundness = value
+        self.leftKnobLayer.roundness = value
+        self.rightKnobLayer.roundness = value
+        self.trackLayer.setNeedsDisplay()
+        self.leftKnobLayer.setNeedsDisplay()
+        self.rightKnobLayer.setNeedsDisplay()
+        
+    }
+    
 }
